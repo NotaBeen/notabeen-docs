@@ -5,21 +5,22 @@ layout: home
 hero:
   name: "Notabeen Documentation"
   text: "Open-Source AI-powered email assistant"
-  tagline: My great project tagline
+  tagline: Reduce inbox overload with AI-assisted summaries and smart replies
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting Started
+      link: /guide/getting-started/
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Github
+      link: https://github.com/NotaBeen/notabeen-ai-email-assistant
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: AI Summaries
+    details: Get quick, readable summaries for long emails so you can act faster.
+  - title: Auto Categorization
+    details: Automatically sort messages into priority buckets (Urgent, Important, Can Wait, etc.).
+  - title: Self-hostable & Secure
+    details: Deploy on your own infrastructure and keep full control of your data.
+
 ---
 
