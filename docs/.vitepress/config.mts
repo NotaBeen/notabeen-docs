@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/notabeen-docs/',
   title: "Notabeen Documentation",
   description: "Open-Source AI-powered email assistant",
   themeConfig: {
