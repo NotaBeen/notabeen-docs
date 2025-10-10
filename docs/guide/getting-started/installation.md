@@ -1,18 +1,4 @@
 
-# Getting Started — NotaBeen
-
-NotaBeen is an open-source AI-powered email assistant that helps reduce inbox
-overload by summarizing messages, suggesting smart replies, and automatically
-categorizing incoming mail.
-
-Demo: ![Notabeen Welcome GIF](https://github.com/NotaBeen/notabeen-ai-email-assistant/raw/main/public/notabeen-welcome.gif)
-
-## Features
-
-- AI-powered summaries for long emails
-- Automated categorization (Urgent, Important, Can Wait, Unsubscribe, Unimportant)
-- Smart reply generation
-- Self-hostable so you control your data
 
 ## Tech stack
 
