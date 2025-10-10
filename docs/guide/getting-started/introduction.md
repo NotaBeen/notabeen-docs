@@ -80,9 +80,7 @@ Full control over your data and infrastructure.
 Ready to dive deeper? Here's what you can explore:
 
 - 📦 [**Installation Guide**](/guide/getting-started/installation) — Set up Notabeen on your own server
-- ⚙️ [**Configuration**](/guide/configuration) — Customize Notabeen to fit your needs
-- 🚀 [**Features**](/guide/features) — Explore all capabilities in detail
-- 🤝 [**Contributing**](/guide/contributing) — Help make Notabeen better
+- 🤝 [**Contributing on GitHub**](https://github.com/NotaBeen/notabeen-ai-email-assistant/blob/main/CONTRIBUTING.md) — Help make Notabeen better
 
 ---
 
