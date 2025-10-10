@@ -63,7 +63,7 @@ The fastest way to get started — no setup required.
 Full control over your data and infrastructure.
 
 <div style="margin: 1rem 0;">
-  <a href="/guide/getting-started/installation" style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #476582; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+  <a href="/notabeen-docs/guide/getting-started/installation" style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #476582; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
     Read Installation Guide →
   </a>
 </div>
