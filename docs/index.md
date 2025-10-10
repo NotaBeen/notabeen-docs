@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Getting Started
-      link: /guide/getting-started/
+      link: /guide/getting-started/introduction
     - theme: alt
       text: Github
       link: https://github.com/NotaBeen/notabeen-ai-email-assistant
