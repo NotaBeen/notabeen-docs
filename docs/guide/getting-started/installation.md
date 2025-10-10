@@ -195,8 +195,9 @@ Make sure to:
 
 Now that you have Notabeen running, learn how to use it effectively:
 
-- [Getting Started with Notabeen](/guide/getting-started/introduction)
-- [View the Main Repository](https://github.com/NotaBeen/notabeen-ai-email-assistant)
+- [Quick Start Guide](/guide/getting-started/introduction)
+- [Features Overview](/guide/features)
+- [Configuration Options](/guide/configuration)
 
 ---
 
