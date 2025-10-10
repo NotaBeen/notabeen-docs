@@ -1,126 +1,211 @@
+---
+title: Installation Guide
+description: Step-by-step guide to install and run Notabeen on your local machine
+---
 
+# Installation Guide
 
-## Tech stack
+This guide will help you set up Notabeen on your local machine in just a few steps.
 
-- Next.js — Framework
-- Material UI — UI components
-- MongoDB — Database
-- NextAuth.js — Authentication
-- Google Gemini API — AI engine
+::: tip Setup Video Available
+Watch our complete setup tutorial: [YouTube Setup Guide](https://www.youtube.com/watch?v=HmpXFbpzquU)
+:::
 
-## Getting started
+## What You'll Need
 
-Setup video: https://www.youtube.com/watch?v=HmpXFbpzquU
+Before starting, make sure you have:
 
-### Prerequisites
+- **Node.js** version 18.0.0 or higher ([Download](https://nodejs.org/))
+- **MongoDB database** — either local installation or a cloud service like [MongoDB Atlas](https://www.mongodb.com/atlas) (free tier available)
+- **Google Cloud account** — for Gmail API access (free)
+- **Google Gemini API key** — for AI features ([Get API key](https://ai.google.dev/))
 
-- Node.js (>= 18.0.0)
-- A MongoDB database (local or hosted)
-- A Google Cloud project with OAuth 2.0 credentials (for Gmail access)
-- A Google Gemini API key
+::: warning Gmail Only
+Currently, Notabeen only supports Gmail accounts. Support for other email providers is coming soon.
+:::
 
-> Note: At the moment NotaBeen supports Gmail only.
+## Installation Steps
 
-### 1. Clone the repository
+### Step 1: Get the Code
 
-Run:
+Open your terminal and clone the repository:
 
-```pwsh
+::: code-group
+```pwsh [PowerShell]
 git clone https://github.com/NotaBeen/notabeen-ai-email-assistant.git
 cd notabeen-ai-email-assistant
 ```
 
-### 2. Install dependencies
+```bash [Bash]
+git clone https://github.com/NotaBeen/notabeen-ai-email-assistant.git
+cd notabeen-ai-email-assistant
+```
+:::
 
-Install with npm (or your preferred Node package manager):
+### Step 2: Install Dependencies
 
-```pwsh
+Choose your preferred package manager and run:
+
+::: code-group
+```pwsh [npm]
 npm install
-# or
+```
+
+```pwsh [pnpm]
 pnpm install
-# or
+```
+
+```pwsh [yarn]
 yarn install
 ```
 
-### 3. Set up environment variables
+```pwsh [bun]
+bun install
+```
+:::
 
-Create a `.env.local` file at the project root and add the variables below.
-Replace placeholders with your real values.
+### Step 3: Configure Environment Variables
+
+Create a file named `.env.local` in the project root folder and add your configuration:
 
 ```env
-# NextAuth & Security
-AUTH_SECRET=
+# Authentication (required)
+AUTH_SECRET=                    # Generate using command below
 NEXTAUTH_URL=http://localhost:3000
 
-# Google OAuth (Authentication & Gmail Access)
-# NOTE: Enable Gmail API scope in Google Cloud. Callback URL:
-# http://localhost:3000/api/auth/callback/google
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
+# Google OAuth (required)
+GOOGLE_CLIENT_ID=               # From Google Cloud Console
+GOOGLE_CLIENT_SECRET=           # From Google Cloud Console
 
-# Database & Encryption
-MONGODB_URI=
-MONGO_CLIENT=
-ENCRYPTION_IV=
-ENCRYPTION_KEY=
+# Database (required)
+MONGODB_URI=                    # Your MongoDB connection string
+MONGO_CLIENT=                   # Your MongoDB client name
 
-# AI Engine
-GEMINI_API_KEY=
+# Encryption (required)
+ENCRYPTION_IV=                  # Generate using command below
+ENCRYPTION_KEY=                 # Generate using command below
+
+# AI Engine (required)
+GEMINI_API_KEY=                 # From Google AI Studio
 ```
 
-#### Quick helpers to generate secrets (PowerShell / cross-platform)
+#### Generate Security Keys
 
-- Generate `AUTH_SECRET` (Node):
+Run these commands to generate the required security keys:
 
-```pwsh
+::: code-group
+```pwsh [PowerShell]
+# Generate AUTH_SECRET
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+# Generate ENCRYPTION_IV
+node -e "console.log(require('crypto').randomBytes(9).toString('base64'))"
+
+# Generate ENCRYPTION_KEY
+node -e "console.log(require('crypto').randomBytes(24).toString('base64'))"
 ```
 
-- Generate `ENCRYPTION_IV` and `ENCRYPTION_KEY` using Node (base64):
+```bash [Bash]
+# Generate AUTH_SECRET
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
-```pwsh
-node -e "console.log(require('crypto').randomBytes(9).toString('base64'))"   # ENCRYPTION_IV
-node -e "console.log(require('crypto').randomBytes(24).toString('base64'))"  # ENCRYPTION_KEY
+# Generate ENCRYPTION_IV
+openssl rand -base64 9
+
+# Generate ENCRYPTION_KEY
+openssl rand -base64 24
 ```
+:::
 
-Note: On Unix-like systems you can also use `openssl rand -base64 9` / `openssl rand -base64 24`.
+::: details Need help getting Google OAuth credentials?
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the **Gmail API**
+4. Go to **Credentials** → **Create Credentials** → **OAuth 2.0 Client ID**
+5. Set the authorized redirect URI to: `http://localhost:3000/api/auth/callback/google`
+6. Copy your Client ID and Client Secret to `.env.local`
+:::
 
-### 4. Run the development server
+### Step 4: Start the Development Server
 
-Start the app locally:
+Launch the application:
 
-```pwsh
+::: code-group
+```pwsh [npm]
 npm run dev
-# or (if the repo provides a Bun script)
+```
+
+```pwsh [pnpm]
+pnpm dev
+```
+
+```pwsh [yarn]
+yarn dev
+```
+
+```pwsh [bun]
 bun dev
 ```
+:::
 
-### 5. Open the app
+### Step 5: Access the Application
 
-Visit `http://localhost:3000` in your browser.
+Open your browser and navigate to:
 
-## Additional notes
+```
+http://localhost:3000
+```
 
-- Make sure your Google Cloud OAuth consent screen and credentials are configured
-  and that the Gmail API is enabled for the project.
-- `NEXTAUTH_URL` should match the URL you use to access the app (use `https://...`
-  in production).
-- Keep your API keys and encryption secrets private.
+::: tip Success!
+If you see the Notabeen login page, you're all set! 🎉
+:::
 
-## Contributing
+## Tech Stack
 
-We ❤️ contributions — open a pull request to fix a bug, add a feature, or improve
-documentation. Please follow standard GitHub PR practices and include a short
-description of your change and the reason for it.
+Notabeen is built with modern technologies:
 
-## License
+- **Next.js** — React framework for the web
+- **Material UI** — Component library
+- **MongoDB** — Database for storing emails and user data
+- **NextAuth.js** — Secure authentication
+- **Google Gemini API** — AI-powered email analysis
 
-This project is available under the MIT Expat License. See the repository
-`LICENSE` for details.
+## Important Notes
 
-## Links
+::: warning Security
+- Never commit your `.env.local` file to version control
+- Keep all API keys and secrets private
+- In production, update `NEXTAUTH_URL` to your actual domain with HTTPS
+:::
 
-- Repo: https://github.com/NotaBeen/notabeen-ai-email-assistant
-- Issues: https://github.com/NotaBeen/notabeen-ai-email-assistant/issues
-- README source: https://github.com/NotaBeen/notabeen-ai-email-assistant/blob/main/README.md
+::: info Google Cloud Setup
+Make sure to:
+- Enable the **Gmail API** in your Google Cloud project
+- Configure the OAuth consent screen
+- Add your email as a test user during development
+:::
+
+## Need Help?
+
+- **Issues?** Report them on [GitHub Issues](https://github.com/NotaBeen/notabeen-ai-email-assistant/issues)
+- **Contribute:** Check out our [GitHub Repository](https://github.com/NotaBeen/notabeen-ai-email-assistant)
+- **Questions?** Create a discussion on GitHub
+
+## What's Next?
+
+Now that you have Notabeen running, learn how to use it effectively:
+
+- [Quick Start Guide](/guide/getting-started/introduction)
+- [Features Overview](/guide/features)
+- [Configuration Options](/guide/configuration)
+
+---
+
+<div style="text-align: center; margin-top: 2rem; opacity: 0.8;">
+
+**Notabeen** is open-source software licensed under the MIT License.
+
+We ❤️ contributions! Pull requests are welcome.
+
+</div>
 
